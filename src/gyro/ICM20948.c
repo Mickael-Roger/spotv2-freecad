@@ -833,7 +833,12 @@ int main(){
       readStepsData(&val.steps);
     }
 
-    zmq_send (publisher, val, strlen(Spotv2__Gyro), 0);
+    uint8_t *buf = NULL;
+    unsigned len = spotv2__gyro__get_packed_size(&val);
+    buf = malloc(len);
+    spotv2__gyro__pack(&val, buf);
+
+    zmq_send(publisher, buf, len, 0);
 
     usleep(10);
   }
