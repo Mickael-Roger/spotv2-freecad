@@ -795,7 +795,7 @@ int main(){
     //  printf("Res: %f %f %f\n", x, y, z);
     //}
     if(quat9DataIsReady() == true){
-      readQuat9Data(&w, &x, &y, &z);
+      readQuat6Data(&w, &x, &y, &z);
       //printf("{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}\n", w, x, y, z);
       sprintf(msg, "{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}", w, x, y, z);
       zmq_send (publisher, msg, strlen(msg), 0);
