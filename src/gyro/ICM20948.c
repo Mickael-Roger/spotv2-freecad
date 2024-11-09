@@ -20,7 +20,7 @@
 #include <stdbool.h>
 
 #include <zmq.h>
-#include "gyro.pb-c.h"
+#include <gyro.pb-c.h>
 
 
 /*************************************************************************
