@@ -20,7 +20,7 @@
 #include <stdbool.h>
 
 #include <zmq.h>
-#include <gyro.pb-c.h>
+#include "gyro.pb-c.h"
 
 
 /*************************************************************************
@@ -774,7 +774,7 @@ void readStepsData(unsigned long* step_count)
 
 int main(){
 
-  Gyro val;
+  Spotv2__Gyro val;
 
   init();
 
@@ -794,39 +794,39 @@ int main(){
     task();
 
     if(accelDataIsReady() == true){
-      readAccelData(&val.Accel_x, &val.Accel_y, &val.Accel_z);
+      readAccelData(&val.accel.x, &val.accel.y, &val.accel.z);
     }
 
     if(gyroDataIsReady()){
-      readGyroData(&val.Gyro_x, &val.Gyro_y, &val.Gyro_z);
+      readGyroData(&val.gyro.x, &val.gyro.y, &val.gyro.z);
     }
 
     if(magDataIsReady()){
-      readMagData(&val.Mag_x, &val.Mag_y, &val.Mag_z);
+      readMagData(&val.mag.x, &val.mag.y, &val.mag.z);
     }
 
     if(gravDataIsReady()){
-      readGravData(&val.Grav_x, &val.Grav_y, &val.Grav_z);
+      readGravData(&val.grav.x, &val.grav.y, &val.grav.z);
     }
 
     if(linearAccelDataIsReady()){
-      readLinearAccelData(&val.LinearAccel_x, &val.LinearAccel_y, &val.LinearAccel_z);
+      readLinearAccelData(&val.linearaccel.x, &val.linearaccel.y, &val.linearaccel.z);
     }
 
     if(euler6DataIsReady()){
-      readEuler6Data(&val.Euler6_roll, &val.Euleur6_pitch, &val.Euler6_yaw);
+      readEuler6Data(&val.euler6.roll, &val.euleur6.pitch, &val.euler6.yaw);
     }
 
     if(euler9DataIsReady()){
-      readEuler9Data(&val.Euler9_roll, &val.Euleur9_pitch, &val.Euler9_yaw);
+      readEuler9Data(&val.euler9.roll, &val.euleur9.pitch, &val.euler9.yaw);
     }
 
     if(quat6DataIsReady() == true){
-      readQuat6Data(&val.Quat6_w, &val.Quat6_x, &val.Quat6_y, &val.Quat6_z);
+      readQuat6Data(&val.quat6.w, &val.quat6.x, &val.quat6.y, &val.quat6.z);
     }
 
     if(quat9DataIsReady() == true){
-      readQuat9Data(&val.Quat9_w, &val.Quat9_x, &val.Quat9_y, &val_Quat9.z);
+      readQuat9Data(&val.quat9.w, &val.quat9.x, &val.quat9.y, &val_quat9.z);
     }
 
     if(stepsDataIsReady() == true){
