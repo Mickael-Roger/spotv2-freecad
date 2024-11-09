@@ -1,0 +1,13 @@
+[Unit]
+Description=Spotv2 Gyroscope
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/usr/bin/python3 /opt/spotv2/gyro/gyro.py
+
+[Install]
+WantedBy=multi-user.target
