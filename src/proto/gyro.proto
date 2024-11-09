@@ -1,11 +1,7 @@
 syntax = "proto3";
 package spotv2;
 
-import "google/protobuf/timestamp.proto";
-
-
 message Gyro {
-  google.protobuf.Timestamp timestamp = 1;
 
   message Accel {
     float x = 1;
