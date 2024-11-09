@@ -7,25 +7,55 @@ import "google/protobuf/timestamp.proto";
 message Position {
   google.protobuf.Timestamp timestamp = 1;
 
-  message Raw {
-    message Accel {
-      double x = 1;
-      double y = 2;
-      double z = 3;
-    }
-    message Gyro {
-      double x = 1;
-      double y = 2;
-      double z = 3;
-    }
-    message Mag {
-      double x = 1;
-      double y = 2;
-      double z = 3;
-    }
+  message Accel {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+  }
+  message Gyro {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+  }
+  message Mag {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+  }
+  message Mag {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+  }
+  message LinearAccel {
+    double x = 1;
+    double y = 2;
+    double z = 3;
+  }
+  message Quat6 {
+    double w = 1;
+    double x = 2;
+    double y = 3;
+    double z = 4;
+  }
+  message Quat9 {
+    double w = 1;
+    double x = 2;
+    double y = 3;
+    double z = 4;
   }
 
-  double frontAngle = 5;
-  double sideAngle = 6;
+  message Euler6 {
+    double roll = 1;
+    double pitch = 2;
+    double yaw = 3;
+  }
+  message Euler9 {
+    double roll = 1;
+    double pitch = 2;
+    double yaw = 3;
+  }
+
+  long steps = 10;
 }
 
