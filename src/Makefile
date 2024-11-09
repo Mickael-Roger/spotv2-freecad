@@ -16,7 +16,7 @@ protobuf_build: $(shell find proto/*.proto -type f)
 
 gyro_build: protobuf_build 
 	cd ./gyro && gcc -c DataConverter.c Icm20948AuxCompassAkm.c ICM20948.c Icm20948DataBaseDriver.c Icm20948Dmp3Driver.c Icm20948MPUFifoControl.c Icm20948Setup.c Message.c Icm20948Augmented.c Icm20948AuxTransport.c Icm20948DataBaseControl.c Icm20948DataConverter.c Icm20948LoadFirmware.c Icm20948SelfTest.c Icm20948Transport.c -I../proto
-	cd ./gyro && gcc -o gyro DataConverter.o Icm20948AuxCompassAkm.o Icm20948DataBaseControl.o Icm20948DataConverter.o Icm20948LoadFirmware.o ICM20948.o Icm20948Setup.o Message.o Icm20948Augmented.o Icm20948AuxTransport.o Icm20948DataBaseDriver.o Icm20948Dmp3Driver.o     Icm20948MPUFifoControl.o  Icm20948SelfTest.o  Icm20948Transport.o ../proto/*.o -lm -lzmq -I../proto 
+	cd ./gyro && gcc -o gyro DataConverter.o Icm20948AuxCompassAkm.o Icm20948DataBaseControl.o Icm20948DataConverter.o Icm20948LoadFirmware.o ICM20948.o Icm20948Setup.o Message.o Icm20948Augmented.o Icm20948AuxTransport.o Icm20948DataBaseDriver.o Icm20948Dmp3Driver.o     Icm20948MPUFifoControl.o  Icm20948SelfTest.o  Icm20948Transport.o ../proto/*.o -lm -lzmq -lprotobuf-c -I../proto 
 	cd ./gyro && rm -rf *.o
 
 gyro_install: gyro_build
