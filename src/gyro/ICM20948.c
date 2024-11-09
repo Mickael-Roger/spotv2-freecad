@@ -774,7 +774,7 @@ void readStepsData(unsigned long* step_count)
 
 int main(){
 
-  Spotv2__Gyro val;
+  Spotv2__Gyro val = SPOTV2__GYRO__INIT;
 
   init();
 
