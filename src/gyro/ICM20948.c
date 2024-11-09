@@ -286,8 +286,6 @@ int icm20948_sensor_setup(void)
     return rc;
   }
 
-  printf("Whoami: %d %x\n", whoami, whoami);
-
   // Setup accel and gyro mounting matrix and associated angle for current board
   inv_icm20948_init_matrix(&icm_device);
 
