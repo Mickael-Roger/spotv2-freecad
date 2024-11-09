@@ -814,26 +814,26 @@ int main(){
     }
 
     if(euler6DataIsReady()){
-      readEuler6Data(&val.euler6_roll, &val.euleur6_pitch, &val.euler6_yaw);
+      readEuler6Data(&val.euler6_roll, &val.euler6_pitch, &val.euler6_yaw);
     }
 
     if(euler9DataIsReady()){
-      readEuler9Data(&val.euler9_roll, &val.euleur9_pitch, &val.euler9_yaw);
+      readEuler9Data(&val.euler9_roll, &val.euler9_pitch, &val.euler9_yaw);
     }
 
     if(quat6DataIsReady() == true){
-      readQuat6Data(&val.Quat6_w, &val.quat6_x, &val.quat6_y, &val.quat6_z);
+      readQuat6Data(&val.quat6_w, &val.quat6_x, &val.quat6_y, &val.quat6_z);
     }
 
     if(quat9DataIsReady() == true){
-      readQuat9Data(&val.Quat9_w, &val.Quat9_x, &val.Quat9_y, &val.Quat9_z);
+      readQuat9Data(&val.quat9_w, &val.quat9_x, &val.quat9_y, &val.quat9_z);
     }
 
     if(stepsDataIsReady() == true){
       readStepsData(&val.steps);
     }
 
-    zmq_send (publisher, val, strlen(val), 0);
+    zmq_send (publisher, val, strlen(Spotv2__Gyro), 0);
 
     usleep(10);
   }
