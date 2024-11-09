@@ -794,43 +794,43 @@ int main(){
     task();
 
     if(accelDataIsReady() == true){
-      readAccelData(&val.Accel.x, &val.Accel.y, &val.Accel.z);
+      readAccelData(&val.Accel_x, &val.Accel_y, &val.Accel_z);
     }
 
     if(gyroDataIsReady()){
-      readGyroData(&val.Gyro.x, &val.Gyro.y, &val.Gyro.z);
+      readGyroData(&val.Gyro_x, &val.Gyro_y, &val.Gyro_z);
     }
 
     if(magDataIsReady()){
-      readMagData(&val.Mag.x, &val.Mag.y, &val.Mag.z);
+      readMagData(&val.Mag_x, &val.Mag_y, &val.Mag_z);
     }
 
     if(gravDataIsReady()){
-      readGravData(&val.Grav.x, &val.Grav.y, &val.Grav.z);
+      readGravData(&val.Grav_x, &val.Grav_y, &val.Grav_z);
     }
 
     if(linearAccelDataIsReady()){
-      readLinearAccelData(&val.LinearAccel.x, &val.LinearAccel.y, &val.LinearAccel.z);
+      readLinearAccelData(&val.LinearAccel_x, &val.LinearAccel_y, &val.LinearAccel_z);
     }
 
     if(euler6DataIsReady()){
-      readEuler6Data(&val.Euler6.roll, &val.Euleur6.pitch, &val.Euler6.yaw);
+      readEuler6Data(&val.Euler6_roll, &val.Euleur6_pitch, &val.Euler6_yaw);
     }
 
     if(euler9DataIsReady()){
-      readEuler9Data(&val.Euler9.roll, &val.Euleur9.pitch, &val.Euler9.yaw);
+      readEuler9Data(&val.Euler9_roll, &val.Euleur9_pitch, &val.Euler9_yaw);
     }
 
     if(quat6DataIsReady() == true){
-      readQuat6Data(&val.Quat6.w, &val.Quat6.x, &val.Quat6.y, &val.Quat6.z);
+      readQuat6Data(&val.Quat6_w, &val.Quat6_x, &val.Quat6_y, &val.Quat6_z);
     }
 
     if(quat9DataIsReady() == true){
-      readQuat9Data(&val.Quat9.w, &val.Quat9.x, &val.Quat9.y, &val.Quat9.z);
+      readQuat9Data(&val.Quat9_w, &val.Quat9_x, &val.Quat9_y, &val_Quat9.z);
     }
 
     if(stepsDataIsReady() == true){
-      readStepsData(&val.steps);
+      readStepsData(&val_steps);
     }
 
     zmq_send (publisher, val, strlen(val), 0);

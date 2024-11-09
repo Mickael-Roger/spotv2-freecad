@@ -3,55 +3,46 @@ package spotv2;
 
 message Gyro {
 
-  message Accel {
-    float x = 1;
-    float y = 2;
-    float z = 3;
-  }
-  message Gyro {
-    float x = 1;
-    float y = 2;
-    float z = 3;
-  }
-  message Mag {
-    float x = 1;
-    float y = 2;
-    float z = 3;
-  }
-  message Grav {
-    float x = 1;
-    float y = 2;
-    float z = 3;
-  }
-  message LinearAccel {
-    float x = 1;
-    float y = 2;
-    float z = 3;
-  }
-  message Quat6 {
-    float w = 1;
-    float x = 2;
-    float y = 3;
-    float z = 4;
-  }
-  message Quat9 {
-    float w = 1;
-    float x = 2;
-    float y = 3;
-    float z = 4;
-  }
+  float Accel_x = 11;
+  float Accel_y = 12;
+  float Accel_z = 13;
+  
+  float Gyro_x = 21;
+  float Gyro_y = 22;
+  float Gyro_z = 23;
+  
+  float Mag_x = 31;
+  float Mag_y = 32;
+  float Mag_z = 33;
+  
+  float Grav_x = 41;
+  float Grav_y = 42;
+  float Grav_z = 43;
+  
+  float LinearAccel_x = 51;
+  float LinearAccel_y = 52;
+  float LinearAccel_z = 53;
+  
+  float Quat6_w = 61;
+  float Quat6_x = 62;
+  float Quat6_y = 63;
+  float Quat6_z = 64;
+  
+  float Quat9_w = 71;
+  float Quat9_x = 72;
+  float Quat9_y = 73;
+  float Quat9_z = 74;
+  
 
-  message Euler6 {
-    float roll = 1;
-    float pitch = 2;
-    float yaw = 3;
-  }
-  message Euler9 {
-    float roll = 1;
-    float pitch = 2;
-    float yaw = 3;
-  }
+  float Euler6_roll = 81;
+  float Euler6_pitch = 82;
+  float Euler6_yaw = 83;
+  
+  float Euler9_roll = 91;
+  float Euler9_pitch = 92;
+  float Euler9_yaw = 93;
+  
 
-  uint64 steps = 10;
+  uint64 steps = 100;
 }
 
