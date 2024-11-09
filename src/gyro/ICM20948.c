@@ -19,6 +19,8 @@
 #include <math.h>
 #include <stdbool.h>
 
+#include <zmq.h>
+
 
 /*************************************************************************
   Settings
@@ -774,6 +776,18 @@ int main(){
   float w, x, y, z;
 
   init();
+
+  void *context = zmq_ctx_new ();
+  void *publisher = zmq_socket (context, ZMQ_PUB);
+  int rc = zmq_bind (publisher, "tcp://*:5555");
+
+  char msg[256];
+
+  if (rc != 0) {
+      printf ("Failed to bind publisher socket: %s\n", zmq_strerror (errno));
+      return 1;
+  }
+
   while(1){
     task();
     //if(accelDataIsReady() == true){
@@ -782,10 +796,15 @@ int main(){
     //}
     if(quat9DataIsReady() == true){
       readQuat9Data(&w, &x, &y, &z);
-      printf("{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}\n", w, x, y, z);
+      //printf("{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}\n", w, x, y, z);
+      sprintf(msg, "{\"w\":%f, \"x\":%f, \"y\":%f, \"z\":%f}\n", w, x, y, z);
+      zmq_send (publisher, msg, strlen(msg), 0);
     }
-    usleep(50);
+    usleep(10);
   }
+
+  zmq_close (publisher);
+  zmq_ctx_destroy (context);
 
   return 0;
 

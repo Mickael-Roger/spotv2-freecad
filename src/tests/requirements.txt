@@ -1,0 +1,6 @@
+pygame
+numpy
+websocket-client
+PyOpenGL
+PyOpenGL_accelerate
+
