@@ -20,6 +20,7 @@
 #include <stdbool.h>
 
 #include <zmq.h>
+#include <gyro.pb-c.h>
 
 
 /*************************************************************************
@@ -714,7 +715,7 @@ void readEuler6Data(float *roll, float *pitch, float *yaw)
 {
     *roll = (atan2f(quat6[0]*quat6[1] + quat6[2]*quat6[3], 0.5f - quat6[1]*quat6[1] - quat6[2]*quat6[2]))* 57.29578f;
     *pitch = (asinf(-2.0f * (quat6[1]*quat6[3] - quat6[0]*quat6[2])))* 57.29578f;
-	*yaw = (atan2f(quat6[1]*quat6[2] + quat6[0]*quat6[3], 0.5f - quat6[2]*quat6[2] - quat6[3]*quat6[3]))* 57.29578f + 180.0f;
+    *yaw = (atan2f(quat6[1]*quat6[2] + quat6[0]*quat6[3], 0.5f - quat6[2]*quat6[2] - quat6[3]*quat6[3]))* 57.29578f + 180.0f;
     euler6_data_ready = false;
 }
 
@@ -773,7 +774,7 @@ void readStepsData(unsigned long* step_count)
 
 int main(){
 
-  float w, x, y, z;
+  Gyro val;
 
   init();
 
@@ -789,17 +790,51 @@ int main(){
   }
 
   while(1){
+
     task();
-    //if(accelDataIsReady() == true){
-    //  readAccelData(&x, &y, &z);
-    //  printf("Res: %f %f %f\n", x, y, z);
-    //}
-    if(quat9DataIsReady() == true){
-      readQuat6Data(&w, &x, &y, &z);
-      //printf("{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}\n", w, x, y, z);
-      sprintf(msg, "{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}", w, x, y, z);
-      zmq_send (publisher, msg, strlen(msg), 0);
+
+    if(accelDataIsReady() == true){
+      readAccelData(&val.Accel.x, &val.Accel.y, &val.Accel.z);
     }
+
+    if(gyroDataIsReady()){
+      readGyroData(&val.Gyro.x, &val.Gyro.y, &val.Gyro.z);
+    }
+
+    if(magDataIsReady()){
+      readMagData(&val.Mag.x, &val.Mag.y, &val.Mag.z);
+    }
+
+    if(gravDataIsReady()){
+      readGravData(&val.Grav.x, &val.Grav.y, &val.Grav.z);
+    }
+
+    if(linearAccelDataIsReady()){
+      readLinearAccelData(&val.LinearAccel.x, &val.LinearAccel.y, &val.LinearAccel.z);
+    }
+
+    if(euler6DataIsReady()){
+      readEuler6Data(&val.Euler6.roll, &val.Euleur6.pitch, &val.Euler6.yaw);
+    }
+
+    if(euler9DataIsReady()){
+      readEuler9Data(&val.Euler9.roll, &val.Euleur9.pitch, &val.Euler9.yaw);
+    }
+
+    if(quat6DataIsReady() == true){
+      readQuat6Data(&val.Quat6.w, &val.Quat6.x, &val.Quat6.y, &val.Quat6.z);
+    }
+
+    if(quat9DataIsReady() == true){
+      readQuat9Data(&val.Quat9.w, &val.Quat9.x, &val.Quat9.y, &val.Quat9.z);
+    }
+
+    if(stepsDataIsReady() == true){
+      readStepsData(&val.steps);
+    }
+
+    zmq_send (publisher, val, strlen(val), 0);
+
     usleep(10);
   }
 

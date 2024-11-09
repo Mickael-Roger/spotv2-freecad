@@ -4,58 +4,58 @@ package spotv2;
 import "google/protobuf/timestamp.proto";
 
 
-message Position {
+message Gyro {
   google.protobuf.Timestamp timestamp = 1;
 
   message Accel {
-    double x = 1;
-    double y = 2;
-    double z = 3;
+    float x = 1;
+    float y = 2;
+    float z = 3;
   }
   message Gyro {
-    double x = 1;
-    double y = 2;
-    double z = 3;
+    float x = 1;
+    float y = 2;
+    float z = 3;
   }
   message Mag {
-    double x = 1;
-    double y = 2;
-    double z = 3;
+    float x = 1;
+    float y = 2;
+    float z = 3;
   }
-  message Mag {
-    double x = 1;
-    double y = 2;
-    double z = 3;
+  message Grav {
+    float x = 1;
+    float y = 2;
+    float z = 3;
   }
   message LinearAccel {
-    double x = 1;
-    double y = 2;
-    double z = 3;
+    float x = 1;
+    float y = 2;
+    float z = 3;
   }
   message Quat6 {
-    double w = 1;
-    double x = 2;
-    double y = 3;
-    double z = 4;
+    float w = 1;
+    float x = 2;
+    float y = 3;
+    float z = 4;
   }
   message Quat9 {
-    double w = 1;
-    double x = 2;
-    double y = 3;
-    double z = 4;
+    float w = 1;
+    float x = 2;
+    float y = 3;
+    float z = 4;
   }
 
   message Euler6 {
-    double roll = 1;
-    double pitch = 2;
-    double yaw = 3;
+    float roll = 1;
+    float pitch = 2;
+    float yaw = 3;
   }
   message Euler9 {
-    double roll = 1;
-    double pitch = 2;
-    double yaw = 3;
+    float roll = 1;
+    float pitch = 2;
+    float yaw = 3;
   }
 
-  long steps = 10;
+  uint64 steps = 10;
 }
 

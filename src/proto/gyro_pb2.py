@@ -14,21 +14,31 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import timestamp_pb2 as google_dot_protobuf_dot_timestamp__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ngyro.proto\x12\x06spotv2\x1a\x1fgoogle/protobuf/timestamp.proto\"\xe3\x01\n\x08Position\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x12\n\nfrontAngle\x18\x05 \x01(\x01\x12\x11\n\tsideAngle\x18\x06 \x01(\x01\x1a\x80\x01\n\x03Raw\x1a(\n\x05\x41\x63\x63\x65l\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\t\n\x01z\x18\x03 \x01(\x01\x1a\'\n\x04Gyro\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\t\n\x01z\x18\x03 \x01(\x01\x1a&\n\x03Mag\x12\t\n\x01x\x18\x01 \x01(\x01\x12\t\n\x01y\x18\x02 \x01(\x01\x12\t\n\x01z\x18\x03 \x01(\x01\x62\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\ngyro.proto\x12\x06spotv2\x1a\x1fgoogle/protobuf/timestamp.proto\"\xea\x03\n\x04Gyro\x12-\n\ttimestamp\x18\x01 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\r\n\x05steps\x18\n \x01(\x04\x1a(\n\x05\x41\x63\x63\x65l\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x1a\'\n\x04Gyro\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x1a&\n\x03Mag\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x1a\'\n\x04Grav\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x1a.\n\x0bLinearAccel\x12\t\n\x01x\x18\x01 \x01(\x02\x12\t\n\x01y\x18\x02 \x01(\x02\x12\t\n\x01z\x18\x03 \x01(\x02\x1a\x33\n\x05Quat6\x12\t\n\x01w\x18\x01 \x01(\x02\x12\t\n\x01x\x18\x02 \x01(\x02\x12\t\n\x01y\x18\x03 \x01(\x02\x12\t\n\x01z\x18\x04 \x01(\x02\x1a\x33\n\x05Quat9\x12\t\n\x01w\x18\x01 \x01(\x02\x12\t\n\x01x\x18\x02 \x01(\x02\x12\t\n\x01y\x18\x03 \x01(\x02\x12\t\n\x01z\x18\x04 \x01(\x02\x1a\x32\n\x06\x45uler6\x12\x0c\n\x04roll\x18\x01 \x01(\x02\x12\r\n\x05pitch\x18\x02 \x01(\x02\x12\x0b\n\x03yaw\x18\x03 \x01(\x02\x1a\x32\n\x06\x45uler9\x12\x0c\n\x04roll\x18\x01 \x01(\x02\x12\r\n\x05pitch\x18\x02 \x01(\x02\x12\x0b\n\x03yaw\x18\x03 \x01(\x02\x62\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
 _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'gyro_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
-  _globals['_POSITION']._serialized_start=56
-  _globals['_POSITION']._serialized_end=283
-  _globals['_POSITION_RAW']._serialized_start=155
-  _globals['_POSITION_RAW']._serialized_end=283
-  _globals['_POSITION_RAW_ACCEL']._serialized_start=162
-  _globals['_POSITION_RAW_ACCEL']._serialized_end=202
-  _globals['_POSITION_RAW_GYRO']._serialized_start=204
-  _globals['_POSITION_RAW_GYRO']._serialized_end=243
-  _globals['_POSITION_RAW_MAG']._serialized_start=245
-  _globals['_POSITION_RAW_MAG']._serialized_end=283
+  _globals['_GYRO']._serialized_start=56
+  _globals['_GYRO']._serialized_end=546
+  _globals['_GYRO_ACCEL']._serialized_start=126
+  _globals['_GYRO_ACCEL']._serialized_end=166
+  _globals['_GYRO_GYRO']._serialized_start=168
+  _globals['_GYRO_GYRO']._serialized_end=207
+  _globals['_GYRO_MAG']._serialized_start=209
+  _globals['_GYRO_MAG']._serialized_end=247
+  _globals['_GYRO_GRAV']._serialized_start=249
+  _globals['_GYRO_GRAV']._serialized_end=288
+  _globals['_GYRO_LINEARACCEL']._serialized_start=290
+  _globals['_GYRO_LINEARACCEL']._serialized_end=336
+  _globals['_GYRO_QUAT6']._serialized_start=338
+  _globals['_GYRO_QUAT6']._serialized_end=389
+  _globals['_GYRO_QUAT9']._serialized_start=391
+  _globals['_GYRO_QUAT9']._serialized_end=442
+  _globals['_GYRO_EULER6']._serialized_start=444
+  _globals['_GYRO_EULER6']._serialized_end=494
+  _globals['_GYRO_EULER9']._serialized_start=496
+  _globals['_GYRO_EULER9']._serialized_end=546
 # @@protoc_insertion_point(module_scope)
