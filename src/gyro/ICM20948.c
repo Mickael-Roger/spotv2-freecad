@@ -771,21 +771,21 @@ void readStepsData(unsigned long* step_count)
 
 int main(){
 
-  float x, y, z;
+  float w, x, y, z;
 
   init();
-  printf("Ici\n");
   while(1){
-  task();
-  if(accelDataIsReady() == true){
-    readAccelData(&x, &y, &z);
-    printf("Res: %f %f %f\n", x, y, z);
+    task();
+    //if(accelDataIsReady() == true){
+    //  readAccelData(&x, &y, &z);
+    //  printf("Res: %f %f %f\n", x, y, z);
+    //}
+    if(quat9DataIsReady() == true){
+      readQuat9Data(&w, &x, &y, &z);
+      printf("{\"quat_w\":%f, \"quat_x\":%f, \"quat_y\":%f, \"quat_z\":%f}\n", w, x, y, z);
+    }
+    usleep(50);
   }
-  //readAccelData(&x, &y, &z);
-  //printf("Res2: %f %f %f\n", x, y, z);
-  usleep(50);
-  }
-  printf("Ici2\n");
 
   return 0;
 
