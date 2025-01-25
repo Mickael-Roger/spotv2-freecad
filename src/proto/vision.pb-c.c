@@ -359,10 +359,10 @@ static const ProtobufCFieldDescriptor spotv2__objects__field_descriptors[2] =
     "timestamp",
     1,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
+    PROTOBUF_C_TYPE_INT32,
     0,   /* quantifier_offset */
     offsetof(Spotv2__Objects, timestamp),
-    &google__protobuf__timestamp__descriptor,
+    NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */

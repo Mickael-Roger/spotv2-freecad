@@ -59,7 +59,7 @@ struct  Spotv2__Gyro
 };
 #define SPOTV2__GYRO__INIT \
  { PROTOBUF_C_MESSAGE_INIT (&spotv2__gyro__descriptor) \
-, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
+    , 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 }
 
 
 /* Spotv2__Gyro methods */
