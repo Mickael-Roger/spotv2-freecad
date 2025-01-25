@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+import "google/protobuf/timestamp.proto";
+
+package spotv2;
+
+message Position {
+  int32 x = 1;
+  int32 y = 2;
+}
+
+message Box {
+  Position first = 1;
+  Position last = 2;
+}
+
+message Object {
+  Box box = 1;
+  string type = 2;
+  float proba = 3;
+}
+
+message Objects {
+  google.protobuf.Timestamp timestamp = 1;
+  repeated Object objets = 2;
+}
+
+

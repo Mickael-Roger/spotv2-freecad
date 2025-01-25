@@ -1,0 +1,4 @@
+hailo-platform
+hailo-python
+yolov5
+opencv
