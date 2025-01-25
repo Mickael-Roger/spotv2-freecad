@@ -1,7 +1,5 @@
 syntax = "proto3";
 
-import "google/protobuf/timestamp.proto";
-
 package spotv2;
 
 message Position {
@@ -21,7 +19,7 @@ message Object {
 }
 
 message Objects {
-  google.protobuf.Timestamp timestamp = 1;
+  int32 timestamp = 1;
   repeated Object objets = 2;
 }
 
