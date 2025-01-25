@@ -10,8 +10,8 @@ start: start_gyro
 
 # Compile all proto files
 protobuf_build: $(shell find proto/*.proto -type f)
-	protoc --proto_path=./proto/ --python_out=./proto/ ./proto/*.proto
-	protoc --proto_path=./proto/ --c_out=./proto/ ./proto/*.proto
+	protoc --proto_path=./proto/ -I/usr/include /usr/include/google/protobuf/timestamp.proto --python_out=./proto/ ./proto/*.proto
+	protoc --proto_path=./proto/ -I/usr/include /usr/include/google/protobuf/timestamp.proto --c_out=./proto/ ./proto/*.proto
 	cd ./proto && gcc -c *.c
 
 gyro_build: protobuf_build 

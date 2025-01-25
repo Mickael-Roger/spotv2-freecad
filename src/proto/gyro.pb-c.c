@@ -7,60 +7,6 @@
 #endif
 
 #include "gyro.pb-c.h"
-void   spotv2__gyro__accel__init
-                     (Spotv2__Gyro__Accel         *message)
-{
-  static const Spotv2__Gyro__Accel init_value = SPOTV2__GYRO__ACCEL__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__gyro__init
-                     (Spotv2__Gyro__Gyro         *message)
-{
-  static const Spotv2__Gyro__Gyro init_value = SPOTV2__GYRO__GYRO__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__mag__init
-                     (Spotv2__Gyro__Mag         *message)
-{
-  static const Spotv2__Gyro__Mag init_value = SPOTV2__GYRO__MAG__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__grav__init
-                     (Spotv2__Gyro__Grav         *message)
-{
-  static const Spotv2__Gyro__Grav init_value = SPOTV2__GYRO__GRAV__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__linear_accel__init
-                     (Spotv2__Gyro__LinearAccel         *message)
-{
-  static const Spotv2__Gyro__LinearAccel init_value = SPOTV2__GYRO__LINEAR_ACCEL__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__quat6__init
-                     (Spotv2__Gyro__Quat6         *message)
-{
-  static const Spotv2__Gyro__Quat6 init_value = SPOTV2__GYRO__QUAT6__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__quat9__init
-                     (Spotv2__Gyro__Quat9         *message)
-{
-  static const Spotv2__Gyro__Quat9 init_value = SPOTV2__GYRO__QUAT9__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__euler6__init
-                     (Spotv2__Gyro__Euler6         *message)
-{
-  static const Spotv2__Gyro__Euler6 init_value = SPOTV2__GYRO__EULER6__INIT;
-  *message = init_value;
-}
-void   spotv2__gyro__euler9__init
-                     (Spotv2__Gyro__Euler9         *message)
-{
-  static const Spotv2__Gyro__Euler9 init_value = SPOTV2__GYRO__EULER9__INIT;
-  *message = init_value;
-}
 void   spotv2__gyro__init
                      (Spotv2__Gyro         *message)
 {
@@ -106,625 +52,359 @@ void   spotv2__gyro__free_unpacked
   assert(message->base.descriptor == &spotv2__gyro__descriptor);
   protobuf_c_message_free_unpacked ((ProtobufCMessage*)message, allocator);
 }
-static const ProtobufCFieldDescriptor spotv2__gyro__accel__field_descriptors[3] =
+static const ProtobufCFieldDescriptor spotv2__gyro__field_descriptors[30] =
 {
   {
-    "x",
-    1,
+    "Accel_x",
+    11,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Accel, x),
+    offsetof(Spotv2__Gyro, accel_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    2,
+    "Accel_y",
+    12,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Accel, y),
+    offsetof(Spotv2__Gyro, accel_y),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    3,
+    "Accel_z",
+    13,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Accel, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__accel__field_indices_by_name[] = {
-  0,   /* field[0] = x */
-  1,   /* field[1] = y */
-  2,   /* field[2] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__accel__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__accel__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Accel",
-  "Accel",
-  "Spotv2__Gyro__Accel",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Accel),
-  3,
-  spotv2__gyro__accel__field_descriptors,
-  spotv2__gyro__accel__field_indices_by_name,
-  1,  spotv2__gyro__accel__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__accel__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__gyro__field_descriptors[3] =
-{
-  {
-    "x",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Gyro, x),
+    offsetof(Spotv2__Gyro, accel_z),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    2,
+    "Gyro_x",
+    21,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Gyro, y),
+    offsetof(Spotv2__Gyro, gyro_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    3,
+    "Gyro_y",
+    22,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Gyro, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__gyro__field_indices_by_name[] = {
-  0,   /* field[0] = x */
-  1,   /* field[1] = y */
-  2,   /* field[2] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__gyro__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__gyro__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Gyro",
-  "Gyro",
-  "Spotv2__Gyro__Gyro",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Gyro),
-  3,
-  spotv2__gyro__gyro__field_descriptors,
-  spotv2__gyro__gyro__field_indices_by_name,
-  1,  spotv2__gyro__gyro__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__gyro__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__mag__field_descriptors[3] =
-{
-  {
-    "x",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Mag, x),
+    offsetof(Spotv2__Gyro, gyro_y),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    2,
+    "Gyro_z",
+    23,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Mag, y),
+    offsetof(Spotv2__Gyro, gyro_z),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    3,
+    "Mag_x",
+    31,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Mag, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__mag__field_indices_by_name[] = {
-  0,   /* field[0] = x */
-  1,   /* field[1] = y */
-  2,   /* field[2] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__mag__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__mag__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Mag",
-  "Mag",
-  "Spotv2__Gyro__Mag",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Mag),
-  3,
-  spotv2__gyro__mag__field_descriptors,
-  spotv2__gyro__mag__field_indices_by_name,
-  1,  spotv2__gyro__mag__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__mag__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__grav__field_descriptors[3] =
-{
-  {
-    "x",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Grav, x),
+    offsetof(Spotv2__Gyro, mag_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    2,
+    "Mag_y",
+    32,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Grav, y),
+    offsetof(Spotv2__Gyro, mag_y),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    3,
+    "Mag_z",
+    33,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Grav, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__grav__field_indices_by_name[] = {
-  0,   /* field[0] = x */
-  1,   /* field[1] = y */
-  2,   /* field[2] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__grav__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__grav__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Grav",
-  "Grav",
-  "Spotv2__Gyro__Grav",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Grav),
-  3,
-  spotv2__gyro__grav__field_descriptors,
-  spotv2__gyro__grav__field_indices_by_name,
-  1,  spotv2__gyro__grav__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__grav__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__linear_accel__field_descriptors[3] =
-{
-  {
-    "x",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__LinearAccel, x),
+    offsetof(Spotv2__Gyro, mag_z),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    2,
+    "Grav_x",
+    41,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__LinearAccel, y),
+    offsetof(Spotv2__Gyro, grav_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    3,
+    "Grav_y",
+    42,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__LinearAccel, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__linear_accel__field_indices_by_name[] = {
-  0,   /* field[0] = x */
-  1,   /* field[1] = y */
-  2,   /* field[2] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__linear_accel__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__linear_accel__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.LinearAccel",
-  "LinearAccel",
-  "Spotv2__Gyro__LinearAccel",
-  "spotv2",
-  sizeof(Spotv2__Gyro__LinearAccel),
-  3,
-  spotv2__gyro__linear_accel__field_descriptors,
-  spotv2__gyro__linear_accel__field_indices_by_name,
-  1,  spotv2__gyro__linear_accel__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__linear_accel__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__quat6__field_descriptors[4] =
-{
-  {
-    "w",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat6, w),
+    offsetof(Spotv2__Gyro, grav_y),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x",
-    2,
+    "Grav_z",
+    43,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat6, x),
+    offsetof(Spotv2__Gyro, grav_z),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    3,
+    "Linearaccel_x",
+    51,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat6, y),
+    offsetof(Spotv2__Gyro, linearaccel_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    4,
+    "Linearaccel_y",
+    52,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat6, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__quat6__field_indices_by_name[] = {
-  0,   /* field[0] = w */
-  1,   /* field[1] = x */
-  2,   /* field[2] = y */
-  3,   /* field[3] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__quat6__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 4 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__quat6__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Quat6",
-  "Quat6",
-  "Spotv2__Gyro__Quat6",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Quat6),
-  4,
-  spotv2__gyro__quat6__field_descriptors,
-  spotv2__gyro__quat6__field_indices_by_name,
-  1,  spotv2__gyro__quat6__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__quat6__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__quat9__field_descriptors[4] =
-{
-  {
-    "w",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat9, w),
+    offsetof(Spotv2__Gyro, linearaccel_y),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "x",
-    2,
+    "Linearaccel_z",
+    53,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat9, x),
+    offsetof(Spotv2__Gyro, linearaccel_z),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "y",
-    3,
+    "Quat6_w",
+    61,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat9, y),
+    offsetof(Spotv2__Gyro, quat6_w),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "z",
-    4,
+    "Quat6_x",
+    62,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Quat9, z),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__quat9__field_indices_by_name[] = {
-  0,   /* field[0] = w */
-  1,   /* field[1] = x */
-  2,   /* field[2] = y */
-  3,   /* field[3] = z */
-};
-static const ProtobufCIntRange spotv2__gyro__quat9__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 4 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__quat9__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Quat9",
-  "Quat9",
-  "Spotv2__Gyro__Quat9",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Quat9),
-  4,
-  spotv2__gyro__quat9__field_descriptors,
-  spotv2__gyro__quat9__field_indices_by_name,
-  1,  spotv2__gyro__quat9__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__quat9__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__euler6__field_descriptors[3] =
-{
-  {
-    "roll",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Euler6, roll),
+    offsetof(Spotv2__Gyro, quat6_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "pitch",
-    2,
+    "Quat6_y",
+    63,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Euler6, pitch),
+    offsetof(Spotv2__Gyro, quat6_y),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "yaw",
-    3,
+    "Quat6_z",
+    64,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Euler6, yaw),
-    NULL,
-    NULL,
-    0,             /* flags */
-    0,NULL,NULL    /* reserved1,reserved2, etc */
-  },
-};
-static const unsigned spotv2__gyro__euler6__field_indices_by_name[] = {
-  1,   /* field[1] = pitch */
-  0,   /* field[0] = roll */
-  2,   /* field[2] = yaw */
-};
-static const ProtobufCIntRange spotv2__gyro__euler6__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__euler6__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Euler6",
-  "Euler6",
-  "Spotv2__Gyro__Euler6",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Euler6),
-  3,
-  spotv2__gyro__euler6__field_descriptors,
-  spotv2__gyro__euler6__field_indices_by_name,
-  1,  spotv2__gyro__euler6__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__euler6__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__euler9__field_descriptors[3] =
-{
-  {
-    "roll",
-    1,
-    PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_FLOAT,
-    0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Euler9, roll),
+    offsetof(Spotv2__Gyro, quat6_z),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "pitch",
-    2,
+    "Quat9_w",
+    71,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Euler9, pitch),
+    offsetof(Spotv2__Gyro, quat9_w),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
-    "yaw",
-    3,
+    "Quat9_x",
+    72,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro__Euler9, yaw),
+    offsetof(Spotv2__Gyro, quat9_x),
     NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
-};
-static const unsigned spotv2__gyro__euler9__field_indices_by_name[] = {
-  1,   /* field[1] = pitch */
-  0,   /* field[0] = roll */
-  2,   /* field[2] = yaw */
-};
-static const ProtobufCIntRange spotv2__gyro__euler9__number_ranges[1 + 1] =
-{
-  { 1, 0 },
-  { 0, 3 }
-};
-const ProtobufCMessageDescriptor spotv2__gyro__euler9__descriptor =
-{
-  PROTOBUF_C__MESSAGE_DESCRIPTOR_MAGIC,
-  "spotv2.Gyro.Euler9",
-  "Euler9",
-  "Spotv2__Gyro__Euler9",
-  "spotv2",
-  sizeof(Spotv2__Gyro__Euler9),
-  3,
-  spotv2__gyro__euler9__field_descriptors,
-  spotv2__gyro__euler9__field_indices_by_name,
-  1,  spotv2__gyro__euler9__number_ranges,
-  (ProtobufCMessageInit) spotv2__gyro__euler9__init,
-  NULL,NULL,NULL    /* reserved[123] */
-};
-static const ProtobufCFieldDescriptor spotv2__gyro__field_descriptors[2] =
-{
   {
-    "timestamp",
-    1,
+    "Quat9_y",
+    73,
     PROTOBUF_C_LABEL_NONE,
-    PROTOBUF_C_TYPE_MESSAGE,
+    PROTOBUF_C_TYPE_FLOAT,
     0,   /* quantifier_offset */
-    offsetof(Spotv2__Gyro, timestamp),
-    &google__protobuf__timestamp__descriptor,
+    offsetof(Spotv2__Gyro, quat9_y),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Quat9_z",
+    74,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, quat9_z),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Euler6_roll",
+    81,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, euler6_roll),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Euler6_pitch",
+    82,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, euler6_pitch),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Euler6_yaw",
+    83,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, euler6_yaw),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Euler9_roll",
+    91,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, euler9_roll),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Euler9_pitch",
+    92,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, euler9_pitch),
+    NULL,
+    NULL,
+    0,             /* flags */
+    0,NULL,NULL    /* reserved1,reserved2, etc */
+  },
+  {
+    "Euler9_yaw",
+    93,
+    PROTOBUF_C_LABEL_NONE,
+    PROTOBUF_C_TYPE_FLOAT,
+    0,   /* quantifier_offset */
+    offsetof(Spotv2__Gyro, euler9_yaw),
+    NULL,
     NULL,
     0,             /* flags */
     0,NULL,NULL    /* reserved1,reserved2, etc */
   },
   {
     "steps",
-    10,
+    100,
     PROTOBUF_C_LABEL_NONE,
     PROTOBUF_C_TYPE_UINT64,
     0,   /* quantifier_offset */
@@ -736,14 +416,50 @@ static const ProtobufCFieldDescriptor spotv2__gyro__field_descriptors[2] =
   },
 };
 static const unsigned spotv2__gyro__field_indices_by_name[] = {
-  1,   /* field[1] = steps */
-  0,   /* field[0] = timestamp */
+  0,   /* field[0] = Accel_x */
+  1,   /* field[1] = Accel_y */
+  2,   /* field[2] = Accel_z */
+  24,   /* field[24] = Euler6_pitch */
+  23,   /* field[23] = Euler6_roll */
+  25,   /* field[25] = Euler6_yaw */
+  27,   /* field[27] = Euler9_pitch */
+  26,   /* field[26] = Euler9_roll */
+  28,   /* field[28] = Euler9_yaw */
+  9,   /* field[9] = Grav_x */
+  10,   /* field[10] = Grav_y */
+  11,   /* field[11] = Grav_z */
+  3,   /* field[3] = Gyro_x */
+  4,   /* field[4] = Gyro_y */
+  5,   /* field[5] = Gyro_z */
+  12,   /* field[12] = Linearaccel_x */
+  13,   /* field[13] = Linearaccel_y */
+  14,   /* field[14] = Linearaccel_z */
+  6,   /* field[6] = Mag_x */
+  7,   /* field[7] = Mag_y */
+  8,   /* field[8] = Mag_z */
+  15,   /* field[15] = Quat6_w */
+  16,   /* field[16] = Quat6_x */
+  17,   /* field[17] = Quat6_y */
+  18,   /* field[18] = Quat6_z */
+  19,   /* field[19] = Quat9_w */
+  20,   /* field[20] = Quat9_x */
+  21,   /* field[21] = Quat9_y */
+  22,   /* field[22] = Quat9_z */
+  29,   /* field[29] = steps */
 };
-static const ProtobufCIntRange spotv2__gyro__number_ranges[2 + 1] =
+static const ProtobufCIntRange spotv2__gyro__number_ranges[10 + 1] =
 {
-  { 1, 0 },
-  { 10, 1 },
-  { 0, 2 }
+  { 11, 0 },
+  { 21, 3 },
+  { 31, 6 },
+  { 41, 9 },
+  { 51, 12 },
+  { 61, 15 },
+  { 71, 19 },
+  { 81, 23 },
+  { 91, 26 },
+  { 100, 29 },
+  { 0, 30 }
 };
 const ProtobufCMessageDescriptor spotv2__gyro__descriptor =
 {
@@ -753,10 +469,10 @@ const ProtobufCMessageDescriptor spotv2__gyro__descriptor =
   "Spotv2__Gyro",
   "spotv2",
   sizeof(Spotv2__Gyro),
-  2,
+  30,
   spotv2__gyro__field_descriptors,
   spotv2__gyro__field_indices_by_name,
-  2,  spotv2__gyro__number_ranges,
+  10,  spotv2__gyro__number_ranges,
   (ProtobufCMessageInit) spotv2__gyro__init,
   NULL,NULL,NULL    /* reserved[123] */
 };
