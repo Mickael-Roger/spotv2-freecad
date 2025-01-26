@@ -1,4 +1,3 @@
-#hailo-platform
-hailo-python
+hailo
 yolov5
 opencv
