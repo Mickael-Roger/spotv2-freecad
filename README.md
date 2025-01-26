@@ -22,3 +22,4 @@ chown -R pi: /op/spotv2
 ```
 
 Install the hailo SDK
+Install python3-opencv package
