@@ -1,3 +1,2 @@
 yolov5
 opencv
-git+https://github.com/hailo-ai/hailo-apps-infra.git

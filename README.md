@@ -20,3 +20,5 @@ Create the Spot directory
 mkdir -p /opt/spotv2
 chown -R pi: /op/spotv2
 ```
+
+Install the hailo SDK
