@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 install_path := /opt/spotv2
 
 all: build install start
