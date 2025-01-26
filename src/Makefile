@@ -4,9 +4,9 @@ all: build install start
 
 build: protobuf_build gyro_build
 
-install: gyro_install 
+install: gyro_install vision_install
 
-start: start_gyro
+start: start_gyro start_vision
 
 # Compile all proto files
 protobuf_build: $(shell find proto/*.proto -type f)
@@ -23,8 +23,8 @@ gyro_install: gyro_build
 	mkdir -p ${install_path}/gyro/
 	cp -f ./gyro/gyro ${install_path}/gyro/
 	chmod +x ${install_path}/gyro/gyro
-	cp -f ./services/gyro.service /etc/systemd/system/spotv2_gyro.service
-	systemcl daemon-reload
+	sudo cp -f ./services/gyro.service /etc/systemd/system/spotv2_gyro.service
+	sudo systemcl daemon-reload
 
 vision_install:
 	mkdir -p ${install_path}/vision/
@@ -32,13 +32,13 @@ vision_install:
 	python3 -m venv ${install_path}/vision/
 	source ${install_path}/vision/bin/activate
 	pip3 install -r ./vision/requirements.txt
-	cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
-	systemcl daemon-reload
+	sudo cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
+	sudo systemcl daemon-reload
 
 start_gyro:
-	systemctl restart spotv2_gyro
+	sudo systemctl restart spotv2_gyro
 
 start_vision:
-	systemctl restart spotv2_vision
+	sudo systemctl restart spotv2_vision
 
 
