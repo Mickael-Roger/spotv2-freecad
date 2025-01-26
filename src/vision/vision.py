@@ -3,7 +3,7 @@ import numpy as np
 import hailo
 import zmq
 import time
-from spotv2_pb2 import Objects, Object, Box, Position
+from vision_pb2 import Objects, Object, Box, Position
 
 MODEL_PATH = "/usr/share/rpi-camera-assets/hailo_yolov8_inference.json"
 cam_index = 0
