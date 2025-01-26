@@ -26,7 +26,19 @@ gyro_install: gyro_build
 	cp -f ./services/gyro.service /etc/systemd/system/spotv2_gyro.service
 	systemcl daemon-reload
 
+vision_install:
+	mkdir -p ${install_path}/vision/
+	cp -f ./vision/vision.py ${install_path}/vision/
+	python3 -m venv ${install_path}/vision/
+	source ${install_path}/vision/bin/activate
+	pip3 install -r ./vision/requirements.txt
+	cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
+	systemcl daemon-reload
+
 start_gyro:
 	systemctl restart spotv2_gyro
+
+start_vision:
+	systemctl restart spotv2_vision
 
 

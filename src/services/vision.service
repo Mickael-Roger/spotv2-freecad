@@ -1,0 +1,14 @@
+[Unit]
+Description=Spotv2 Vision
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/opt/spotv2/vision/bin/python3 /opt/spotv2/vision/vision.py
+
+[Install]
+WantedBy=multi-user.target
+
