@@ -30,8 +30,7 @@ vision_install:
 	mkdir -p ${install_path}/vision/
 	cp -f ./vision/vision.py ${install_path}/vision/
 	python3 -m venv ${install_path}/vision/
-	${install_path}/vision/bin/activate
-	pip3 install -r ./vision/requirements.txt
+	. ${install_path}/vision/bin/activate && pip3 install -r ./vision/requirements.txt
 	sudo cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
 	sudo systemctl daemon-reload
 
