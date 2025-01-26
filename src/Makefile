@@ -24,7 +24,7 @@ gyro_install: gyro_build
 	cp -f ./gyro/gyro ${install_path}/gyro/
 	chmod +x ${install_path}/gyro/gyro
 	sudo cp -f ./services/gyro.service /etc/systemd/system/spotv2_gyro.service
-	sudo systemcl daemon-reload
+	sudo systemctl daemon-reload
 
 vision_install:
 	mkdir -p ${install_path}/vision/
@@ -33,7 +33,7 @@ vision_install:
 	source ${install_path}/vision/bin/activate
 	pip3 install -r ./vision/requirements.txt
 	sudo cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
-	sudo systemcl daemon-reload
+	sudo systemctl daemon-reload
 
 start_gyro:
 	sudo systemctl restart spotv2_gyro
