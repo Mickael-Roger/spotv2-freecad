@@ -28,9 +28,10 @@ gyro_install: gyro_build
 	sudo systemctl daemon-reload
 
 vision_install:
-	mkdir -p ${install_path}/vision/
-	cp -f ./vision/vision.py ./vision/setup_env.sh ./proto/vision_pb2.py ./proto/vision.proto ${install_path}/vision/
-	. ${install_path}/vision/setup_env.sh
+	mkdir -p ${install_path}/vision/packages/
+	cp -f ./vision/vision.py ./proto/vision_pb2.py ./proto/vision.proto ${install_path}/vision/
+	sudo apt install --upgrade  hailort
+	. ${install_path}/vision/hailo_rpi5/bin/activate && pip3 install ./vision/packages/hailort-4.19.0-cp311-cp311-linux_aarch64.whl
 	. ${install_path}/vision/hailo_rpi5/bin/activate && pip3 install -r ./vision/requirements.txt
 	sudo cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
 	sudo systemctl daemon-reload
