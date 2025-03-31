@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+package spotv2;
+
+enum ServoStatus {
+    STARTED = 0;
+    STOPPED = 1;
+    MOVING = 2;
+    ERROR = 3;
+}
+
+message Servo {
+    int32 position = 1;
+    int32 speed = 2;
+    int32 resistance = 3;
+    ServoStatus status = 4;
+    int32 temp = 5;
+    int32 voltage = 6;
+    int32 current = 7;
+}
+
+message Motion {
+    Servo FOOT_LEFT_FRONT = 1;
+    Servo FOOT_RIGHT_FRONT = 2;
+    Servo FOOT_LEFT_BACK = 3;
+    Servo FOOT_RIGHT_BACK = 4;
+    Servo LEG_LEFT_FRONT = 5;
+    Servo LEG_RIGHT_FRONT = 6;
+    Servo LEG_LEFT_BACK = 7;
+    Servo LEG_RIGHT_BACK = 8;
+    Servo SHOULDER_LEFT_FRONT = 9;
+    Servo SHOULDER_RIGHT_FRONT = 10;
+    Servo SHOULDER_LEFT_BACK = 11;
+    Servo SHOULDER_RIGHT_BACK = 12;
+}
+
+message Command {
+    repeated CommandServo commands = 1;
+}
+
+message CommandServo {
+    oneof command {
+        MoveServo move_servo = 1;
+        StopServo stop_servo = 2;
+        StartServo start_servo = 3;
+    }
+}
+
+message MoveServo {
+    int32 servo_id = 1;
+    int32 position = 2;
+    int32 acceleration = 3;
+}
+
+message StopServo {
+    int32 servo_id = 1;
+}
+
+message StartServo {
+    int32 servo_id = 1;
+}

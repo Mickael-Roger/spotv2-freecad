@@ -5,9 +5,9 @@ all: build install start
 
 build: protobuf_build gyro_build
 
-install: gyro_install vision_install
+install: gyro_install vision_install motion_install
 
-start: start_gyro start_vision
+start: start_gyro start_vision start_motion
 
 # Compile all proto files
 protobuf_build: $(shell find proto/*.proto -type f)
@@ -36,6 +36,18 @@ vision_install:
 	. ${install_path}/vision/hailo_rpi5/bin/activate && pip3 install -r ./vision/requirements.txt
 	sudo cp -f ./services/vision.service /etc/systemd/system/spotv2_vision.service
 	sudo systemctl daemon-reload
+
+motion_install:
+	mkdir -p ${install_path}/motion/
+	cp -rf ./motion/STservo_sdk ./motion/motion.py ./proto/motion_pb2.py ./proto/motion.proto ./motion/requirements.txt ${install_path}/motion/
+	virtualenv -p python3.11 ${install_path}/motion/st3215
+	. ${install_path}/motion/st3215/bin/activate && pip3 install -r ./motion/requirements.txt
+	sudo cp -f ./services/motion.service /etc/systemd/system/spotv2_motion.service
+	sudo systemctl daemon-reload
+
+
+start_motion:
+	sudo systemctl restart spotv2_motion
 
 start_gyro:
 	sudo systemctl restart spotv2_gyro

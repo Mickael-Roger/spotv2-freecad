@@ -1,79 +1,109 @@
-import cv2
 import numpy as np
-import hailo
-import zmq
+from picamera2 import Picamera2
+import cv2
+from hailo_platform import (HEF, VDevice, HailoStreamInterface, InferVStreams, ConfigureParams,
+    InputVStreamParams, OutputVStreamParams, FormatType)
+
 import time
-from vision_pb2 import Objects, Object, Box, Position
 
-MODEL_PATH = "/usr/share/rpi-camera-assets/hailo_yolov8_inference.json"
-cam_index = 0
-MAX_FPS = 10
+# Initialisation de la caméra avec picamera2
+camera = Picamera2()
+camera.configure(camera.create_preview_configuration(main={"size": (640, 640)}))
+camera.start()
 
-# Initialize ZeroMQ publisher
-context = zmq.Context()
-socket = context.socket(zmq.PUB)
-socket.bind("tcp://*:5556")
+# Configuration du modèle YOLO
+model_name = 'yolov5'
+hef_path = '/usr/share/hailo-models/yolov8s_h8l.hef'.format(model_name)
+hef = HEF(hef_path)
 
-def load_model(model_path):
-    device = hailo.HailoDevice()
-    network_group = device.load_network_group(model_path)
-    return network_group
+# Configuration du périphérique Hailo
+target = VDevice()
+configure_params = ConfigureParams.create_from_hef(hef=hef, interface=HailoStreamInterface.PCIe)
+network_groups = target.configure(hef, configure_params)
+network_group = network_groups[0]
+network_group_params = network_group.create_params()
 
-def preprocess_frame(frame, input_shape):
-    resized_frame = cv2.resize(frame, (input_shape[1], input_shape[0]))
-    normalized_frame = resized_frame / 255.0
-    return normalized_frame.astype(np.float32)
+# Création des paramètres de flux virtuels d'entrée et de sortie
+input_vstreams_params = InputVStreamParams.make(network_group, format_type=FormatType.UINT8)
+output_vstreams_params = OutputVStreamParams.make(network_group, format_type=FormatType.FLOAT32)
 
-def infer_frame(network_group, frame):
-    input_tensor = preprocess_frame(frame, (640, 640, 3))
-    input_tensor = np.expand_dims(input_tensor, axis=0)
-    infer_result = network_group.run({'input': input_tensor})
-    return infer_result['output']
+# Récupération des informations sur les flux virtuels
+input_vstream_info = hef.get_input_vstream_infos()[0]
+output_vstream_info = hef.get_output_vstream_infos()[0]
+image_height, image_width, channels = input_vstream_info.shape
 
-def publish_detections(results):
-    objects_msg = Objects()
-    objects_msg.timestamp = int(time.time())
-    
+print(f"Taille d'entrée du modèle: {image_width}x{image_height} avec {channels} canaux")
+
+
+# Fonction pour prétraiter l'image
+def preprocess_image(image):
+    resized_image = cv2.resize(image, (image_width, image_height))
+    if resized_image.shape[-1] == 4:
+        resized_image = cv2.cvtColor(resized_image, cv2.COLOR_BGRA2BGR)
+    #normalized_image = resized_image / 255.0
+    normalized_image = resized_image.astype(np.uint8)
+    print(f"Shape des données d'entrée : {normalized_image.shape}")
+
+    return normalized_image
+    #return normalized_image.astype(np.float32)
+
+# Fonction pour post-traiter les résultats YOLO
+def postprocess_results(results):
+    # Supposons que les résultats soient sous forme de tableau avec les classes détectées
+    detected_objects = []
+    print("XXXXXXXXXX")
+    print(results)
+    print("XXXXXXXXXX")
     for result in results:
-        x1, y1, x2, y2, confidence, class_id = result
-        if confidence > 0.5:  # Confidence threshold
-            obj_msg = Object()
-            obj_msg.box.first.x = int(x1)
-            obj_msg.box.first.y = int(y1)
-            obj_msg.box.last.x = int(x2)
-            obj_msg.box.last.y = int(y2)
-            obj_msg.type = str(class_id)
-            obj_msg.proba = float(confidence)
-            objects_msg.objets.append(obj_msg)
-    
-    socket.send(objects_msg.SerializeToString())
+        try:
+            class_id = np.argmax(result)
+            detected_objects.append(class_id)
+        except:
+            pass
+    return detected_objects
 
-def main():
-    network_group = load_model(MODEL_PATH)
-    cap = cv2.VideoCapture(cam_index)
+# Fonction principale pour la détection d'objets
+def detect_objects():
+    i = 0
+    with InferVStreams(network_group, input_vstreams_params, output_vstreams_params) as infer_pipeline:
+        with network_group.activate(network_group_params):
+            while True:
+                # Capture d'une image avec picamera2
+                frame = camera.capture_array()
 
-    if not cap.isOpened():
-        print("Error: Unable to open camera")
-        return
+                # Prétraitement de l'image
+                input_data = preprocess_image(frame)
+                cv2.imshow('Frame', frame)
+                input_data = np.expand_dims(input_data, axis=0)  # Ajout de la dimension batch
 
-    frame_time = 1.0 / MAX_FPS
-    while True:
-        start_time = time.time()
-        ret, frame = cap.read()
-        if not ret:
-            break
+                # Inférence
+                input_data = {input_vstream_info.name: input_data}
+                infer_results = infer_pipeline.infer(input_data)
+                results = infer_results[output_vstream_info.name]
 
-        results = infer_frame(network_group, frame)
-        publish_detections(results)
-        
-        elapsed_time = time.time() - start_time
-        sleep_time = max(0, frame_time - elapsed_time)
-        time.sleep(sleep_time)
+                # Post-traitement des résultats
+                detected_objects = postprocess_results(results)
+                print("Objets détectés :", detected_objects)
 
-    cap.release()
+                # Affichage de l'image avec les objets détectés
+                for obj in detected_objects:
+                    cv2.putText(frame, str(obj), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 255, 255), 2)
+                #cv2.imshow('Détection d\'objets', frame)
+
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+                
+                i+=1
+
+                if i > 2:
+                    time.sleep(300)
+
+    camera.stop()
+    cv2.destroyAllWindows()
+    target.release()
 
 if __name__ == "__main__":
-    main()
+    detect_objects()
 
 
 

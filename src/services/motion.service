@@ -1,0 +1,15 @@
+[Unit]
+Description=Spotv2 Servo motion
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=1
+ExecStart=/opt/spotv2/motion/st3215/bin/python3 /opt/spotv2/motion/motion.py
+
+[Install]
+WantedBy=multi-user.target
+
+
